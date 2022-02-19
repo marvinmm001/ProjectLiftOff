@@ -1,0 +1,185 @@
+Paul Bonsma
+Paul Bonsma
+12:12 PM
+
+References > Add Reference > System
+
+using System.IO.Ports;
+using System.Threading;
+
+   public static void Main()
+
+   {
+
+      SerialPort port = new SerialPort();
+
+      port.PortName = "COM4"; 
+
+      port.BaudRate = 9600;
+
+      port.RtsEnable = true;
+
+      port.DtrEnable = true;
+
+      port.Open();
+
+      while (true)
+
+      {
+
+         string a = port.ReadExisting();
+
+         if (a!="") 
+
+            Console.WriteLine("Read from port: "+a);
+
+
+
+         if (Console.KeyAvailable) {
+
+            ConsoleKeyInfo key = Console.ReadKey ();
+
+            port.Write (key.KeyChar.ToString());
+
+         }
+
+         Thread.Sleep(30);
+
+      }
+
+   }
+
+
+
+
+Ports = SerialPort.GetPortNames();
+
+           foreach (String portName in Ports)
+
+           {
+
+               port = new SerialPort(portName);
+
+
+
+               port.BaudRate = 9600;
+
+               port.ReadTimeout = 1000000;
+
+
+
+
+
+               if (_useUno == false)
+
+               {
+
+                   port.RtsEnable = true;
+
+                   port.DtrEnable = true;
+
+               }
+
+               else
+
+               {
+
+                   port.RtsEnable = false;
+
+                   port.DtrEnable = false;
+
+               }
+
+
+
+               if (port.IsOpen)
+
+               {
+
+                   port.Close();
+
+                   try { port.Open(); }
+
+                   catch (System.IO.IOException e) { continue; }
+
+               }
+
+               else
+
+               {
+
+                   try { port.Open(); }
+
+                   catch (System.IO.IOException e) { continue; }
+
+               }
+
+
+
+               port.DiscardOutBuffer();
+
+               port.DiscardInBuffer();
+
+
+
+               Console.WriteLine("Send Data please");
+
+               SendString("GIVE HANDSHAKE");
+
+
+
+               Console.WriteLine("Gimme Data please");
+
+               String Accept = null;
+
+               bool accepted = false;
+
+
+
+               while (!accepted)
+
+                   try
+
+                   {
+
+                       Accept = port.ReadLine();
+
+                       accepted = true;
+
+                   }
+
+                   catch (TimeoutException e)
+
+                   {
+
+                       Console.WriteLine("rip");
+
+                   }
+
+
+
+               Console.WriteLine(Accept);
+
+               if (Accept.Contains("HANDSHAKE"))
+
+               {
+
+                   found = true;
+
+                   port.Write("FOUND");
+
+                   break;
+
+               }
+
+
+
+               port.DiscardInBuffer();
+
+               Console.WriteLine("blih");
+
+           }
+
+           Console.WriteLine("bloh");
+
+       }
