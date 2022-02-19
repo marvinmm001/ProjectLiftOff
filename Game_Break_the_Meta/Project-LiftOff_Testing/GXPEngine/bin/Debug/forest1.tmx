@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="103">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="104">
  <tileset firstgid="1" name="basicTiles" tilewidth="32" tileheight="32" tilecount="162" columns="18">
   <image source="basicTiles.png" width="576" height="288"/>
  </tileset>
@@ -47,7 +47,6 @@
 </data>
  </layer>
  <objectgroup id="7" name="Object Layer 1">
-  <object id="1" name="Player" type="Player" x="37" y="444" width="170" height="256"/>
   <object id="33" name="shooter" type="Shooter" x="609.091" y="366.667" width="176" height="112"/>
   <object id="35" name="shooter" type="Shooter" x="730.182" y="168.242" width="176" height="112"/>
   <object id="36" name="shooter" type="Shooter" x="757.455" y="540.97" width="176" height="112"/>
@@ -55,7 +54,14 @@
   <object id="50" name="shooter" type="Shooter" x="3140.55" y="226.121" width="176" height="112"/>
   <object id="51" name="shooter" type="Shooter" x="3624.78" y="410.546" width="176" height="112"/>
   <object id="52" name="shooter" type="Shooter" x="3615.21" y="116.121" width="176" height="112"/>
-  <object id="100" name="portal" type="Portal" x="3924.33" y="6" width="76.6667" height="690.667"/>
+  <object id="100" name="portal" type="Portal" x="3924.33" y="6" width="76.6667" height="690.667">
+   <properties>
+    <property name="nextLevel" value="lab"/>
+    <property name="portalName" value="portalRings"/>
+    <property name="portalType" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="103" name="Player" type="Player" x="2784.7" y="417.455" width="170" height="256"/>
  </objectgroup>
  <objectgroup id="8" name="Trap">
   <object id="7" name="forestBarrier" type="ForestBarrier" x="420.182" y="1.87879" width="170" height="676"/>

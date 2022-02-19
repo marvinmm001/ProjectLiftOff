@@ -90,8 +90,6 @@
     <Compile Include="Pickup\Pickup.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Portal.cs" />
-    <Compile Include="PortalCity.cs" />
-    <Compile Include="PortalRestart.cs" />
     <Compile Include="SerialPort.cs" />
     <Compile Include="Shooter\Shooter.cs" />
     <Compile Include="SoundManager.cs" />

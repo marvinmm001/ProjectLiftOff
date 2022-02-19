@@ -28,7 +28,7 @@ public class Button : Sprite
                     case "playButton":
                         
                         ((MyGame)game).LoadLevel("forest1");
-                        game.soundManager.PlaySound(musicSound, "music");
+                        //game.soundManager.PlaySound(musicSound, "music");
 
                         break;
 

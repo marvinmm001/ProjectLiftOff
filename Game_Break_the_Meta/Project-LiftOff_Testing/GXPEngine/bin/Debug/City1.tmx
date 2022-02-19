@@ -68,7 +68,7 @@
   <object id="1" name="Player" type="Player" x="-10.4457" y="394.521" width="250.715" height="263.376"/>
   <object id="3" name="shooter" type="Shooter" x="1998.09" y="1002.36" width="44" height="28"/>
   <object id="9" name="shooter" type="Shooter" x="2852.77" y="422.697" width="154" height="80"/>
-  <object id="10" name="portalRestart" type="PortalRestart" x="4038.76" y="95.0303" width="68" height="602"/>
+  <object id="10" name="portalRestart" type="Portal" x="4038.76" y="95.0303" width="68" height="602"/>
  </objectgroup>
  <objectgroup id="4" name="Traps" offsetx="-85.3333" offsety="-24.7273">
   <object id="39" name="barrier" type="Barrier" x="1953.84" y="373.417" width="64" height="310"/>
