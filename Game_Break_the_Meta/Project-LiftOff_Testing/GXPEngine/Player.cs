@@ -73,7 +73,7 @@ public class Player : AnimationSprite
     {
         if (started)
         {
-            speedX = 10.75f;
+            speedX = 6.75f;
 
             //Normal Movement
             speedX += horizontalSpeed;
