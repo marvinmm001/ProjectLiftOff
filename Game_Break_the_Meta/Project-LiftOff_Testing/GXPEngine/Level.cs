@@ -31,6 +31,7 @@ public class Level : GameObject
 
         player = this.FindObjectOfType<Player>();
         CreateHUD(player);
+        if (player != null) SetChildIndex(player, GetChildCount()); //make player the last Index
 
         Shooter[] shooters = this.FindObjectsOfType<Shooter>();
         {

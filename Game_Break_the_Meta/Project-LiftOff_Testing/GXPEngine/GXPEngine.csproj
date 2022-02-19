@@ -97,7 +97,6 @@
     <Compile Include="Shooter\ForestShooter.cs" />
     <Compile Include="Trap\ForestBarrier.cs" />
     <Compile Include="Trap\Spike.cs" />
-    <Compile Include="Trap\Trap.cs" />
   </ItemGroup>
   <ItemGroup />
 </Project>

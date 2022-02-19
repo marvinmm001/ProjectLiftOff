@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using GXPEngine;
 using TiledMapParser;
-public class ForestBarrier : Trap
+/*public class ForestBarrier : Trap
 {
     public int health = 30;
     protected int lastTimeAttacked = 0;
@@ -37,4 +37,4 @@ public class ForestBarrier : Trap
             this.LateDestroy();
         }
     }
-}
+}*/

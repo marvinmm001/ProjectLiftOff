@@ -5,7 +5,7 @@ using System.Text;
 using GXPEngine;
 using GXPEngine.Core;
 using TiledMapParser;
-public class Player : AnimationSprite
+public class Player : Sprite
 {
     //Figure out how to make jumping & double jumping with a timer
 
@@ -37,28 +37,44 @@ public class Player : AnimationSprite
     public bool started = false;
     public bool canceler = false;
 
-    
-    public Player(TiledObject obj) : base("player1.png", 10, 1)
-    {
-        collider.isTrigger = true;
-        AddChild(aimIndicator);
-    }
-
 
     float currentLeverValue = 0;
     AimIndicator aimIndicator = new AimIndicator();
+
+    AnimationSprite playerImage;
+    int columns = 10;
+    int rows = 1;
+
+    public Player(TiledObject obj) : base("hitboxPlayer.jpg")
+    {
+        collider.isTrigger = true;
+        //AddChild(aimIndicator);
+
+        if (obj != null)
+        {
+            playerImage = new AnimationSprite("player1.png", columns, rows, -1, false, false);
+            playerImage.SetXY(-600, -150);
+            Console.WriteLine("imageWidth: {0}, imageHeight: {1}", playerImage.x, playerImage.y);
+            //playerImage.SetOrigin(playerImage.x, playerImage.y);
+            playerImage.SetScaleXY(8, 3);
+            AddChild(playerImage);
+        }
+       
+    }
+
     void SmoothLeverValue()
     {
         currentLeverValue *= 0.9f;
         currentLeverValue += 0.1f * game.arduino.GetLeverValue();
     }
+
     void Update()
     {
         if (canceler == false)
         {
             checkIfStarted();
         }
-        Animate(0.12f);
+        playerImage.Animate(0.12f);
         HorizontalMovement();
         VerticalMovement();
         if (lastTimeShot < Time.time) Shooting();
@@ -67,6 +83,10 @@ public class Player : AnimationSprite
 
         SmoothLeverValue();
         aimIndicator.SetAimingDirection(aimIndicator.MapLeverValue(currentLeverValue));
+
+        //--------------------------------------------------------------------------------------
+       /* if (isSliding) this._scaleY = 0.5f;
+        else this.SetScaleXY(1,1);*/
     }
 
     void HorizontalMovement()
@@ -88,8 +108,8 @@ public class Player : AnimationSprite
             //Animation for HorizontalMovement
             if (Mathf.Abs(speedX) > 0.1f)
             {
-                if (isSliding) SetCycle(9, 1);  //Sliding Animation
-                else SetCycle(0, 9);            //Running Animation
+                if (isSliding) playerImage.SetCycle(9, 1);  //Sliding Animation
+                else playerImage.SetCycle(0, 9);            //Running Animation
             }
 
             MoveUntilCollision(speedX, 0);
@@ -100,7 +120,7 @@ public class Player : AnimationSprite
     {
         verticalSpeed += 0.19f;
 
-        if ((Input.GetKeyDown(Key.W)))
+        if ((Input.GetKeyDown(Key.W)) && !isSliding)
         {
             if (numberOfJump > 0)
             {
@@ -130,7 +150,7 @@ public class Player : AnimationSprite
         else
         {
             started = false;
-            SetCycle(3, 1); //Idle Animation
+            playerImage.SetCycle(2, 1); //Idle Animation
         }
     }
     void OnCollision(GameObject objectsColliding)
@@ -177,9 +197,9 @@ public class Player : AnimationSprite
         {
             int delta_height = 0;
 
-            Bullet bullet = new Bullet("shoot.png", 6, 1, this, bulletSpeed, 0.05f, 0.05f);
-            bullet.SetOrigin(this.width, this.height + 1200);
-            parent.AddChild(bullet);
+            Bullet bullet = new Bullet("shoot.png", 6, 1, this, bulletSpeed, 0.08f, 0.08f);
+            //bullet.SetOrigin(this.width - 00, this.height);
+            
             game.soundManager.PlaySound(shootingSound, "level");
             /*if (Input.GetKey(Key.V)) bullet.SetXY(this.x - 50, this.y - 50); //TOP
             if (Input.GetKey(Key.B)) bullet.SetXY(this.x + 100, this.y + 100); //BOTTOM*/
@@ -205,12 +225,13 @@ public class Player : AnimationSprite
             //if (ArduinoInput.leverValue >= 400 && ArduinoInput.leverValue <= 600) bullet.SetXY(this.x, this.y);
             Console.WriteLine("leverValue= {0}", ArduinoInput.leverValue);
             
-            bullet.SetXY(this.x + 100 , this.y  + delta_height); 
+            bullet.SetXY(this.x - 10 , this.y  + delta_height - 50); 
             lastTimeShot = Time.time + 500;
             Console.WriteLine("Player shooting bullet {0}" , delta_height);
 
             //get an array of all Shooter objects with FindObjectsOfType<Shooter>()
             //find out the distance between the player and every shooter 
+            parent.AddChild(bullet);
         }
     }
 

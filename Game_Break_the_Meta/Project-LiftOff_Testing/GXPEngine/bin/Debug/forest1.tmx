@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="104">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="113">
  <tileset firstgid="1" name="basicTiles" tilewidth="32" tileheight="32" tilecount="162" columns="18">
   <image source="basicTiles.png" width="576" height="288"/>
  </tileset>
@@ -47,26 +47,64 @@
 </data>
  </layer>
  <objectgroup id="7" name="Object Layer 1">
-  <object id="33" name="shooter" type="Shooter" x="609.091" y="366.667" width="176" height="112"/>
-  <object id="35" name="shooter" type="Shooter" x="730.182" y="168.242" width="176" height="112"/>
-  <object id="36" name="shooter" type="Shooter" x="757.455" y="540.97" width="176" height="112"/>
-  <object id="49" name="shooter" type="Shooter" x="3147.45" y="544.546" width="176" height="112"/>
-  <object id="50" name="shooter" type="Shooter" x="3140.55" y="226.121" width="176" height="112"/>
-  <object id="51" name="shooter" type="Shooter" x="3624.78" y="410.546" width="176" height="112"/>
-  <object id="52" name="shooter" type="Shooter" x="3615.21" y="116.121" width="176" height="112"/>
+  <object id="50" name="shooter" type="Shooter" x="3140.55" y="226.121" width="176" height="112">
+   <properties>
+    <property name="shooterName" value="shooterForest"/>
+    <property name="shooterType" value="1"/>
+   </properties>
+  </object>
   <object id="100" name="portal" type="Portal" x="3924.33" y="6" width="76.6667" height="690.667">
    <properties>
     <property name="nextLevel" value="lab"/>
-    <property name="portalName" value="portalRings"/>
+    <property name="portalName" value="portalForest"/>
     <property name="portalType" type="int" value="1"/>
    </properties>
   </object>
-  <object id="103" name="Player" type="Player" x="2784.7" y="417.455" width="170" height="256"/>
+  <object id="104" name="Player" type="Player" x="90.0303" y="524" width="50" height="180"/>
+  <object id="107" name="shooter" type="Shooter" x="3149.33" y="534.667" width="176" height="112">
+   <properties>
+    <property name="shooterName" value="shooterForest"/>
+    <property name="shooterType" value="1"/>
+   </properties>
+  </object>
+  <object id="108" name="shooter" type="Shooter" x="3634.67" y="408" width="176" height="112">
+   <properties>
+    <property name="shooterName" value="shooterForest"/>
+    <property name="shooterType" value="1"/>
+   </properties>
+  </object>
+  <object id="109" name="shooter" type="Shooter" x="3604" y="109.333" width="176" height="112">
+   <properties>
+    <property name="shooterName" value="shooterForest"/>
+    <property name="shooterType" value="1"/>
+   </properties>
+  </object>
+  <object id="110" name="shooter" type="Shooter" x="598.667" y="341.333" width="176" height="112">
+   <properties>
+    <property name="shooterName" value="shooterForest"/>
+    <property name="shooterType" value="1"/>
+   </properties>
+  </object>
+  <object id="111" name="shooter" type="Shooter" x="740" y="150.667" width="176" height="112">
+   <properties>
+    <property name="shooterName" value="shooterForest"/>
+    <property name="shooterType" value="1"/>
+   </properties>
+  </object>
+  <object id="112" name="shooter" type="Shooter" x="753.333" y="556" width="176" height="112">
+   <properties>
+    <property name="shooterName" value="shooterForest"/>
+    <property name="shooterType" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="8" name="Trap">
-  <object id="7" name="forestBarrier" type="ForestBarrier" x="420.182" y="1.87879" width="170" height="676"/>
-  <object id="8" name="forestBarrier" type="ForestBarrier" x="2067.85" y="2.12121" width="170" height="676"/>
-  <object id="9" name="forestBarrier" type="ForestBarrier" x="3405.55" y="1.0303" width="170" height="676"/>
+  <object id="7" name="forestBarrier" type="Barrier" x="384.667" y="0" width="140" height="680">
+   <properties>
+    <property name="barrierName" value="barrierForest"/>
+    <property name="barrierType" type="int" value="1"/>
+   </properties>
+  </object>
   <object id="53" name="spike" type="Spike" x="1123.58" y="661.834" width="70" height="40"/>
   <object id="54" name="spike" type="Spike" x="1197.08" y="662" width="70" height="40"/>
   <object id="55" name="spike" type="Spike" x="1271.75" y="662" width="70" height="40"/>
@@ -78,6 +116,18 @@
   <object id="61" name="spike" type="Spike" x="2341.08" y="660.666" width="70" height="40"/>
   <object id="62" name="spike" type="Spike" x="2415.75" y="660.666" width="70" height="40"/>
   <object id="67" name="spike" type="Spike" x="2490.33" y="661.333" width="70" height="40"/>
+  <object id="105" name="forestBarrier" type="Barrier" x="2044.33" y="0" width="140" height="680">
+   <properties>
+    <property name="barrierName" value="barrierForest"/>
+    <property name="barrierType" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="106" name="forestBarrier" type="Barrier" x="3435" y="0" width="140" height="680">
+   <properties>
+    <property name="barrierName" value="barrierForest"/>
+    <property name="barrierType" type="int" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="9" name="Pickup">
   <object id="3" name="coin1" type="Coin" x="266.833" y="542.167" width="30" height="30">

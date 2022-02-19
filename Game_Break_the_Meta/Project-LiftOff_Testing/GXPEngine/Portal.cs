@@ -7,16 +7,18 @@ using TiledMapParser;
 public class Portal : Sprite
 {
     AnimationSprite portalImage;
+    
+    //Custom Properties
     string portalName;
     int portalType;
     string nextLevel;
-    public Portal(TiledObject obj) : base("hitbox.jpg")
+    public Portal(TiledObject obj) : base("hitboxPortal.jpg")
     {
         collider.isTrigger = true;
 
         if (obj != null)
         {
-            portalName = obj.GetStringProperty("portalName", "Portal");
+            portalName = obj.GetStringProperty("portalName", "portal");
             portalType = obj.GetIntProperty("portalType", 0);
             nextLevel = obj.GetStringProperty("nextLevel", "mainMenu");
 

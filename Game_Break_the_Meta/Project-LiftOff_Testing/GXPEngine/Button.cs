@@ -19,26 +19,30 @@ public class Button : Sprite
     Sound musicSound = new Sound("music.mp3", true, true);
     void Update()
     {
-        if (HitTestPoint(Input.mouseX, Input.mouseY))    
+        /* if (HitTestPoint(Input.mouseX, Input.mouseY))    
+         {
+             if (Input.GetMouseButton(0))
+             {*/
+        if (Input.GetKeyDown(Key.SPACE))
         {
-            if (Input.GetMouseButton(0))
+            switch (buttonType)
             {
-                switch (buttonType)
-                {
-                    case "playButton":
-                        
-                        ((MyGame)game).LoadLevel("forest1");
-                        //game.soundManager.PlaySound(musicSound, "music");
+                case "playButton":
 
-                        break;
+                    ((MyGame)game).LoadLevel("forest1");
+                    //game.soundManager.PlaySound(musicSound, "music");
 
-                    case "restartButton":
-                        ((MyGame)game).LoadLevel("mainMenu");
-                        break;
-                }
+                    break;
+
+                case "restartButton":
+                    ((MyGame)game).LoadLevel("mainMenu");
+                    break;
             }
-            
         }
+
+        /*     }
+
+         }*/
     }
 }
 

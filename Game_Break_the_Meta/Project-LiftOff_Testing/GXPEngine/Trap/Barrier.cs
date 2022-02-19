@@ -4,17 +4,33 @@ using System.Linq;
 using System.Text;
 using GXPEngine;
 using TiledMapParser;
-public class Barrier : Trap
+public class Barrier : Sprite
 {
     //Barrier doesn't work properly yet:
-        //no push back effect
-    
-    public int health = 30;
-    protected int lastTimeAttacked = 0;
+    //no push back effect
 
-    public Barrier(TiledObject obj = null) : base("closeddoor.png")
+    Sprite barrierImage;
+
+    //Custom Properties
+    string barrierName;
+    int barrierType;
+
+    public Barrier(TiledObject obj = null) : base("hitboxBarrier.jpg")
     {
         collider.isTrigger = false;
+
+        if (obj != null)
+        {
+            barrierName = obj.GetStringProperty("barrierName", "barrier");
+            barrierType = obj.GetIntProperty("barrierType", 0);
+
+            barrierImage = new Sprite(barrierName + ".png", false, false);
+            barrierImage.SetOrigin(barrierImage.width/2, barrierImage.height/2);
+            if (barrierType != 0) barrierImage.SetScaleXY(0.125f, 0.35f);
+            AddChild(barrierImage);
+
+            alpha = 1;
+        }
     }
     void Update()
     {
@@ -23,18 +39,6 @@ public class Barrier : Trap
 
     void OnCollision(GameObject objectsColliding)
     {
-        if (objectsColliding is Player player)
-        {
-            if (lastTimeAttacked < Time.time)
-            {
-                player.Health -= 1;
-                player.AddForce(-200, 0);
-                lastTimeAttacked = Time.time + 1000;
-
-                Console.WriteLine("Player Hits Barrier, Player's Health: " + player.Health);
-            }
-        }
-
         if (objectsColliding is Bullet bullet && bullet.owner is Player)
         {
             this.LateDestroy();

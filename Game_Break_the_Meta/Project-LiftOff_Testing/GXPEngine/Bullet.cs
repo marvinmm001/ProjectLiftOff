@@ -35,6 +35,7 @@ public class Bullet : AnimationSprite
 
     void Update()
     {
+        Animate(0.2f);
         BulletMovement();
     }
 
@@ -66,6 +67,6 @@ public class Bullet : AnimationSprite
             }
         }
 
-        if (owner is Player && (objectsColliding is Barrier || objectsColliding is ForestBarrier)) this.LateDestroy();
+        if (owner is Player && objectsColliding is Barrier) this.LateDestroy();
     }
 }
