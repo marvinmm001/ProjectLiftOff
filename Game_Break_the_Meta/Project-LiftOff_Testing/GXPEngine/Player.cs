@@ -58,6 +58,8 @@ public class Player : Sprite
             //playerImage.SetOrigin(playerImage.x, playerImage.y);
             playerImage.SetScaleXY(8, 3);
             AddChild(playerImage);
+
+            alpha = 0;
         }
        
     }
