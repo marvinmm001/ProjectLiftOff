@@ -6,8 +6,6 @@ using GXPEngine;
 using TiledMapParser;
 public class Shooter : Sprite
 {
-    //Timing of bullet spawn & shooter animation
-
     public GameObject target;
     public bool isMirrored;
     int lastTimeAttack = 0;
@@ -80,7 +78,7 @@ public class Shooter : Sprite
             shooterImage.Mirror(false, false);
             isMirrored = false;
         }
-        if (lastTimeAttack < Time.time /*&& this.currentFrame == 0*/) ShootBullets();
+        if (lastTimeAttack < Time.time) ShootBullets();
     }
 
     void ShootBullets()

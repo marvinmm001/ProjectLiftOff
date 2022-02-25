@@ -15,25 +15,33 @@ public class HUD : Canvas
     public HUD(Player pTarget) : base(100, 100, false)
     {
         player = pTarget;
-        currentLife = player.Health;
+        currentLife = game.Health;
 
         lives = new AnimationSprite("heartsAnimation.png", 1, 21, -1, false, false);
         lives.SetCycle(0, 21);
         lives.SetScaleXY(0.15f, 0.15f);
         AddChild(lives);
         framesToAnimate = 0;
+
+        if (game.Health <= 20)
+        {
+            if (game.Health >= 16) framesToAnimate = 4;
+            else if (game.Health >= 12) framesToAnimate = 8;
+            else if (game.Health >= 8) framesToAnimate = 12;
+            else if (game.Health >= 4) framesToAnimate = 16;
+        }
     }
 
     void Update()
     {
         /*healthBar.Clear(Color.Red);
         healthBar.Fill(Color.Green);
-        healthBar.Rect(0, 0, player.health * 4, 40); */
+        healthBar.Rect(0, 0, game.Health * 4, 40); */
 
         if (framesToAnimate > 20) framesToAnimate = 0;
-        if (currentLife > player.Health)
+        if (currentLife > game.Health)
         {
-            currentLife = player.Health;
+            currentLife = game.Health;
             if (currentLife % 4 == 0) framesToAnimate += 4;
         }
         if (framesToAnimate > lives.currentFrame)
@@ -42,7 +50,7 @@ public class HUD : Canvas
         }
 
         graphics.Clear(Color.Empty);
-        graphics.DrawString("Score  " + player.coins, SystemFonts.DefaultFont, Brushes.AntiqueWhite, 5, 50);
+        graphics.DrawString("Score  " + game.score, SystemFonts.DefaultFont, Brushes.AntiqueWhite, 5, 50);
         
     }
 }

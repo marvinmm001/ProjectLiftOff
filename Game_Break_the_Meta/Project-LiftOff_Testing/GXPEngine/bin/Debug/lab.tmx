@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="48">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="51">
  <tileset firstgid="1" name="labBarrier" tilewidth="35" tileheight="418" tilecount="0" columns="1">
   <image source="labBarrier.png" width="35" height="418"/>
  </tileset>
@@ -44,8 +44,6 @@
 </data>
  </layer>
  <objectgroup id="3" name="objects">
-  <object id="5" name="table" gid="1" x="3464" y="770" width="269" height="141"/>
-  <object id="9" name="table" gid="1" x="1344" y="768" width="269" height="141"/>
   <object id="10" name="coin" type="Coin" x="928" y="288" width="31.9375" height="31.8958">
    <properties>
     <property name="coinType" value="gold"/>
@@ -81,12 +79,12 @@
     <property name="coinType" value="gold"/>
    </properties>
   </object>
-  <object id="17" name="coin" type="Coin" x="1504.03" y="595.052" width="31.9375" height="31.8958">
+  <object id="17" name="coin" type="Coin" x="1484.03" y="520.385" width="31.9375" height="31.8958">
    <properties>
     <property name="coinType" value="gold"/>
    </properties>
   </object>
-  <object id="18" name="coin" type="Coin" x="1567.91" y="594.99" width="31.9375" height="31.8958">
+  <object id="18" name="coin" type="Coin" x="1527.91" y="526.99" width="31.9375" height="31.8958">
    <properties>
     <property name="coinType" value="gold"/>
    </properties>
@@ -186,6 +184,18 @@
     <property name="nextLevel" value="City1"/>
    </properties>
   </object>
-  <object id="47" name="Player" type="Player" x="16.3333" y="556" width="50" height="180"/>
+  <object id="47" name="Player" type="Player" x="16.3333" y="536" width="50" height="200"/>
+  <object id="48" name="table" type="Obstacle" x="1344" y="595" width="269" height="141">
+   <properties>
+    <property name="obstacleName" value="table"/>
+    <property name="obstacleType" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="50" name="table" type="Obstacle" x="3464" y="595" width="269" height="141">
+   <properties>
+    <property name="obstacleName" value="table"/>
+    <property name="obstacleType" type="int" value="2"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -23,6 +23,11 @@ namespace GXPEngine
 
 		public ArduinoInput arduino;
 
+		public int score = 0;
+
+		int _health = 24;
+		public int Health { get => _health; set => _health = value; }
+
 		/// <summary>
 		/// Step delegate defines the signature of a method used for step callbacks, see OnBeforeStep, OnAfterStep.
 		/// </summary>

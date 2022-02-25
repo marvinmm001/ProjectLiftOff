@@ -36,9 +36,7 @@ public class Portal : Sprite
             AddChild(portalImage);
 
             alpha = 1;
-        }
-
-        
+        }        
     }
 
     void Update()

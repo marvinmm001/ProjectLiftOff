@@ -40,6 +40,9 @@ public class Level : GameObject
                 s.target = player;
             }
         }
+
+        if (nameLevel == "mainMenu") game.Health = 24;
+        if (nameLevel == "scoreLevel") CreateScoreDisplay();
     }
 
     void Update()
@@ -68,6 +71,11 @@ public class Level : GameObject
     {
         if (player == null) return; //if player is null then don't excecute what's underneath
         game.LateAddChild(new HUD(pTarget));
+    }
+
+    void CreateScoreDisplay()
+    {
+        game.LateAddChild(new ScoreDisplay());
     }
 }
 

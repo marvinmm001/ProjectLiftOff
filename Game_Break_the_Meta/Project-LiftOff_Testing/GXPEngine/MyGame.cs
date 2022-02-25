@@ -25,13 +25,13 @@ public class MyGame : Game
 		AddChild(player);*/
         arduino = new ArduinoInput();
         AddChild(arduino);
-        LoadLevel("mainMenu");
+        LoadLevel("City1");
     }
 
 
     public void Update()
     {
-        if (Input.GetKey(Key.Q)) LoadLevel("forest1");
+        if (Input.GetKey(Key.Q)) LoadLevel("mainMenu");
         if (Input.GetKey(Key.R)) Console.WriteLine(currentFps);
     }
 

@@ -7,9 +7,6 @@ using GXPEngine.Core;
 
 public class Bullet : AnimationSprite
 {
-    //the collision check for bullet is destroying each other(FIXED)
-    //MUST FIX: bullet from shooter can destroy barrier (FIXED)
-
     public Sprite owner;
     int speedX;
     GameObject target;
@@ -20,7 +17,7 @@ public class Bullet : AnimationSprite
         SetXY(pOwner.x, pOwner.y);
         SetOrigin(pOwner.width/2, pOwner.height/2);
         speedX = pVelocityX;
-       
+        collider.isTrigger = true;
     }
 
     public Bullet(string filename, int columns, int rows, Sprite pOwner, int pVelocityX, float scaleX, float scaleY) : base(filename, columns, rows)
@@ -29,6 +26,7 @@ public class Bullet : AnimationSprite
         SetXY(pOwner.x, pOwner.y);
         SetOrigin(pOwner.width / 2, pOwner.height / 2);
         speedX = pVelocityX;
+        collider.isTrigger = true;
         
         SetScaleXY(scaleX, scaleY);
     }
@@ -49,24 +47,20 @@ public class Bullet : AnimationSprite
     {
         if (objectsColliding != owner)
         {
-            if (objectsColliding is Player player)
+            if (objectsColliding is Player)
             {
-                player.Health -= 1;
+                game.Health -= 1;
                 this.LateDestroy();
-                Console.WriteLine("Bullet hits Player, Player's health: " + player.Health);
+                Console.WriteLine("Bullet hits Player, Player's health: " + game.Health);
             }
 
-            if (objectsColliding is Shooter shooter)
+            if (objectsColliding is Shooter shooter && owner is Player)
             {
-                //shooter.health -= 5;
-                //parent.LateAddChild(new Particle("smoke", 12, 7, this.x, this.y, 0.2f, 0.2f));
                 this.LateDestroy();
                 shooter.LateDestroy();
-                
-                //Console.WriteLine("Bullet hits Shooter, Shooter's health: " + shooter.health);
             }
         }
 
-        if (owner is Player && objectsColliding is Barrier) this.LateDestroy();
+        if (objectsColliding is Barrier && owner is Player) this.LateDestroy();
     }
 }

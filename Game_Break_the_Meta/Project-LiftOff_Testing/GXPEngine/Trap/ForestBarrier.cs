@@ -24,11 +24,11 @@ using TiledMapParser;
         {
             if (lastTimeAttacked < Time.time)
             {
-                player.Health -= 1;
+                game.Health -= 1;
                 player.AddForce(-200, 0);
                 lastTimeAttacked = Time.time + 1000;
 
-                Console.WriteLine("Player Hits Barrier, Player's Health: " + player.Health);
+                Console.WriteLine("Player Hits Barrier, Player's Health: " + game.Health);
             }
         }
 

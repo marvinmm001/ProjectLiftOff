@@ -6,9 +6,6 @@ using GXPEngine;
 using TiledMapParser;
 public class Barrier : Sprite
 {
-    //Barrier doesn't work properly yet:
-    //no push back effect
-
     Sprite barrierImage;
 
     //Custom Properties

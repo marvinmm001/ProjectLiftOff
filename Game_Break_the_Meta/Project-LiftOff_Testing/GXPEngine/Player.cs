@@ -7,12 +7,6 @@ using GXPEngine.Core;
 using TiledMapParser;
 public class Player : Sprite
 {
-    //Figure out how to make jumping & double jumping with a timer
-
-    //FIX:
-    //Clean up the code for HorizontalMovement
-    //When Sliding the bullets aren't moving along
-
     //HorizontalMovement
     float speedX = 0;
     float horizontalSpeed = 0.05f;
@@ -28,12 +22,8 @@ public class Player : Sprite
     int lastTimeShot = 0;
     int lastTimeAttacked = 0;
 
-    //Collectables
-    int _health = 24;
-    public int Health { get => _health; set => _health = value; }
-    //int bullets;
     int bulletSpeed = 5;
-    public int coins = 0;
+    
     public bool started = false;
     public bool canceler = false;
 
@@ -53,10 +43,8 @@ public class Player : Sprite
         if (obj != null)
         {
             playerImage = new AnimationSprite("player1.png", columns, rows, -1, false, false);
-            playerImage.SetXY(-600, -150);
+            playerImage.SetXY(-120, -80);
             Console.WriteLine("imageWidth: {0}, imageHeight: {1}", playerImage.x, playerImage.y);
-            //playerImage.SetOrigin(playerImage.x, playerImage.y);
-            playerImage.SetScaleXY(8, 3);
             AddChild(playerImage);
 
             alpha = 1;
@@ -87,8 +75,18 @@ public class Player : Sprite
         aimIndicator.SetAimingDirection(aimIndicator.MapLeverValue(currentLeverValue));
 
         //--------------------------------------------------------------------------------------
-       /* if (isSliding) this._scaleY = 0.5f;
-        else this.SetScaleXY(1,1);*/
+        if (isSliding)
+        {
+            this._scaleY = 1;
+            playerImage.SetXY(-180, -60);
+            playerImage.SetScaleXY(2.8f, 1.3f);
+        }
+        else 
+        {
+            this.SetScaleXY(0.5f, 2);
+            playerImage.SetXY(-180, -80);
+            playerImage.SetScaleXY(2.8f, 1.3f);
+        }
     }
 
     void HorizontalMovement()
@@ -167,13 +165,11 @@ public class Player : Sprite
 
         if (objectsColliding is Coin coin)
         {
-            if (coin.coinType == "gold") coins += 3;
-            else if (coin.coinType == "silver") coins += 2;
-            else if (coin.coinType == "bronze") coins += 1;
-
+            if (coin.coinType == "gold") game.score += 3;
+            else if (coin.coinType == "silver") game.score += 2;
+            else if (coin.coinType == "bronze") game.score += 1;
             coin.LateDestroy();
-            Console.WriteLine("Player gets a coin: " + coin.coinType);
-            Console.WriteLine("Player's coins: " + coins);
+          
         }
 
         //Collisions - Trap
@@ -183,8 +179,8 @@ public class Player : Sprite
             {
                 //ReceivedDamage(enemy.Damage);
                 int spikeDamage = 1;
-                this._health -= spikeDamage;
-                Console.WriteLine("Player hits Spikes, Player's Health: " + _health);
+                game.Health -= spikeDamage;
+                Console.WriteLine("Player hits Spikes, Player's Health: " + game.Health);
                 lastTimeAttacked = Time.time + 1000;
                 //Console.WriteLine("Received Damage: " + enemy.Damage);
             }
@@ -200,9 +196,10 @@ public class Player : Sprite
             int delta_height = 0;
 
             Bullet bullet = new Bullet("shoot.png", 6, 1, this, bulletSpeed, 0.08f, 0.08f);
-            //bullet.SetOrigin(this.width - 00, this.height);
+            //bullet.SetOrigin(this.width - 0, this.height);
             
-            game.soundManager.PlaySound(shootingSound, "level");
+            //game.soundManager.PlaySound(shootingSound, "level");
+
             /*if (Input.GetKey(Key.V)) bullet.SetXY(this.x - 50, this.y - 50); //TOP
             if (Input.GetKey(Key.B)) bullet.SetXY(this.x + 100, this.y + 100); //BOTTOM*/
             if (ArduinoInput.leverValue <= 300)
@@ -239,9 +236,11 @@ public class Player : Sprite
 
     void CheckHealth()
     {
-        if (_health <= 3)
+        if (game.Health <= 3)
         {
             ((MyGame)game).LoadLevel("loseScreen");
+            game.Health = 24;
+            game.score = 0;
         }
     }
 

@@ -19,10 +19,6 @@ public class Button : Sprite
     Sound musicSound = new Sound("music.mp3", true, true);
     void Update()
     {
-        /* if (HitTestPoint(Input.mouseX, Input.mouseY))    
-         {
-             if (Input.GetMouseButton(0))
-             {*/
         if (Input.GetKeyDown(Key.SPACE))
         {
             switch (buttonType)
@@ -39,10 +35,6 @@ public class Button : Sprite
                     break;
             }
         }
-
-        /*     }
-
-         }*/
     }
 }
 

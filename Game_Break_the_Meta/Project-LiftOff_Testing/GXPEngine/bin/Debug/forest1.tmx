@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="114">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="117">
  <tileset firstgid="1" name="basicTiles" tilewidth="32" tileheight="32" tilecount="162" columns="18">
   <image source="basicTiles.png" width="576" height="288"/>
  </tileset>
@@ -60,7 +60,7 @@
     <property name="portalType" type="int" value="1"/>
    </properties>
   </object>
-  <object id="104" name="Player" type="Player" x="90.0303" y="524" width="50" height="180"/>
+  <object id="104" name="Player" type="Player" x="90.0303" y="504" width="50" height="200"/>
   <object id="107" name="shooter" type="Shooter" x="3149.33" y="534.667" width="176" height="112">
    <properties>
     <property name="shooterName" value="shooterForest"/>
@@ -97,7 +97,17 @@
     <property name="shooterType" value="1"/>
    </properties>
   </object>
-  <object id="113" name="stump" type="Obstacle" x="912" y="602.667" width="100" height="100"/>
+  <object id="113" name="stump" type="Obstacle" x="944" y="604" width="100" height="100">
+   <properties>
+    <property name="obstacleType" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="115" name="fence" type="Obstacle" x="580" y="556" width="153" height="100">
+   <properties>
+    <property name="obstacleName" value="fence"/>
+    <property name="obstacleType" type="int" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="8" name="Trap">
   <object id="7" name="forestBarrier" type="Barrier" x="384.667" y="0" width="140" height="680">

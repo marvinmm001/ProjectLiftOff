@@ -42,7 +42,6 @@
     <Compile Include="Bullet.cs" />
     <Compile Include="Button.cs" />
     <Compile Include="HUD.cs" />
-    <Compile Include="Particle.cs" />
     <Compile Include="Pickup\Coin.cs" />
     <Compile Include="Pickup\DoubleJump.cs" />
     <Compile Include="GXPEngine\AddOns\Gizmos.cs" />
@@ -90,7 +89,7 @@
     <Compile Include="Pickup\Pickup.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Portal.cs" />
-    <Compile Include="SerialPort.cs" />
+    <Compile Include="ScoreDisplay.cs" />
     <Compile Include="Shooter\Shooter.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="Trap\Barrier.cs" />
