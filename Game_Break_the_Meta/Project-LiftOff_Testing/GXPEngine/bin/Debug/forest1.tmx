@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="113">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="128" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="114">
  <tileset firstgid="1" name="basicTiles" tilewidth="32" tileheight="32" tilecount="162" columns="18">
   <image source="basicTiles.png" width="576" height="288"/>
  </tileset>
@@ -97,6 +97,7 @@
     <property name="shooterType" value="1"/>
    </properties>
   </object>
+  <object id="113" name="stump" type="Obstacle" x="912" y="602.667" width="100" height="100"/>
  </objectgroup>
  <objectgroup id="8" name="Trap">
   <object id="7" name="forestBarrier" type="Barrier" x="384.667" y="0" width="140" height="680">

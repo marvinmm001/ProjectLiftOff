@@ -37,7 +37,7 @@ public class Shooter : Sprite
             else shooterImage.SetScaleXY(1.2f, 1);
             AddChild(shooterImage);
             
-            alpha = 0;
+            alpha = 1;
         }
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="2">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="3">
  <layer id="1" name="Tile Layer 1" width="50" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -55,10 +55,13 @@
 </data>
  </layer>
  <objectgroup id="2" name="Object Layer 1">
-  <object id="1" name="buttonPlay" type="Button" x="289.228" y="163.305" width="128" height="128">
+  <object id="1" name="buttonPlay" type="Button" x="572.127" y="237.105" width="128" height="128">
    <properties>
     <property name="buttonType" value="playButton"/>
    </properties>
+  </object>
+  <object id="2" x="214.749" y="418.949" width="933.747" height="105.1">
+   <text pixelsize="75" wrap="1" color="#ffffff" halign="center" valign="center">Press Lever Button to Start</text>
   </object>
  </objectgroup>
 </map>

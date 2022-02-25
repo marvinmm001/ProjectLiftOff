@@ -35,7 +35,7 @@ public class Portal : Sprite
             if (portalType != 0) portalImage.SetScaleXY(3.75f, 13);
             AddChild(portalImage);
 
-            alpha = 0;
+            alpha = 1;
         }
 
         

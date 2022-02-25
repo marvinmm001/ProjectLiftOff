@@ -29,7 +29,7 @@ public class Barrier : Sprite
             if (barrierType != 0) barrierImage.SetScaleXY(0.125f, 0.35f);
             AddChild(barrierImage);
 
-            alpha = 0;
+            alpha = 1;
         }
     }
     void Update()
