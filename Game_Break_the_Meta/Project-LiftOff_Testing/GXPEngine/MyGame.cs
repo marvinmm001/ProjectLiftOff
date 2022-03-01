@@ -25,7 +25,7 @@ public class MyGame : Game
 		AddChild(player);*/
         arduino = new ArduinoInput();
         AddChild(arduino);
-        LoadLevel("City1");
+        LoadLevel("mainMenu");
     }
 
 

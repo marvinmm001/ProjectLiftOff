@@ -7,12 +7,12 @@ using TiledMapParser;
 public class Button : Sprite
 {
     public string buttonType;
+    bool soundPlaying;
     public Button(TiledObject obj = null) : base("square.png")
     {
         if (obj != null)
         {
             buttonType = obj.GetStringProperty("buttonType", null);
-
         }
     }
 
@@ -27,13 +27,29 @@ public class Button : Sprite
 
                     ((MyGame)game).LoadLevel("forest1");
                     //game.soundManager.PlaySound(musicSound, "music");
+                    soundPlaying = true;
 
                     break;
 
                 case "restartButton":
                     ((MyGame)game).LoadLevel("mainMenu");
+                    soundPlaying = false;
                     break;
             }
+        }
+
+        Sound();
+    }
+
+    void Sound()
+    {
+        if (soundPlaying)
+        {
+            game.soundManager.PlaySound(musicSound, "music");
+        }
+        else 
+        {
+            game.soundManager.musicChannel.Stop();
         }
     }
 }

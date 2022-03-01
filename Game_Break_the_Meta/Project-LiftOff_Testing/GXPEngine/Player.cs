@@ -11,6 +11,7 @@ public class Player : Sprite
     float speedX = 0;
     float horizontalSpeed = 0.05f;
     bool isSliding = false;
+    bool afterSliding;
 
     //VerticalMovement
     float verticalSpeed;
@@ -22,7 +23,7 @@ public class Player : Sprite
     int lastTimeShot = 0;
     int lastTimeAttacked = 0;
 
-    int bulletSpeed = 5;
+    int bulletSpeed = 10;
     
     public bool started = false;
     public bool canceler = false;
@@ -49,7 +50,6 @@ public class Player : Sprite
 
             alpha = 1;
         }
-       
     }
 
     void SmoothLeverValue()
@@ -81,8 +81,9 @@ public class Player : Sprite
             playerImage.SetXY(-180, -60);
             playerImage.SetScaleXY(2.8f, 1.3f);
         }
-        else 
+        else
         {
+            if(afterSliding) this.SetXY(this.x, 632);
             this.SetScaleXY(0.5f, 2);
             playerImage.SetXY(-180, -80);
             playerImage.SetScaleXY(2.8f, 1.3f);
@@ -101,7 +102,11 @@ public class Player : Sprite
 
             //Sliding
             if (Input.GetKey(Key.S)) isSliding = true;
-            if (Input.GetKeyUp(Key.S)) isSliding = false;
+            if (Input.GetKeyUp(Key.S))
+            {
+                isSliding = false;
+                afterSliding = true;
+            } 
 
             if (isSliding) speedX += 3;
 
@@ -128,6 +133,7 @@ public class Player : Sprite
                 --numberOfJump;
             }
             else maxNumberOfJump = 1;
+            afterSliding = false;
         }
 
         isGrounded = false;
@@ -198,28 +204,32 @@ public class Player : Sprite
             Bullet bullet = new Bullet("shoot.png", 6, 1, this, bulletSpeed, 0.08f, 0.08f);
             //bullet.SetOrigin(this.width - 0, this.height);
             
-            //game.soundManager.PlaySound(shootingSound, "level");
+            game.soundManager.PlaySound(shootingSound, "level");
 
             /*if (Input.GetKey(Key.V)) bullet.SetXY(this.x - 50, this.y - 50); //TOP
             if (Input.GetKey(Key.B)) bullet.SetXY(this.x + 100, this.y + 100); //BOTTOM*/
-            if (ArduinoInput.leverValue <= 300)
+
+            /* if (Input.GetKey(Key.V)) bullet.SetXY(this.x - 50, this.y - 50); //TOP
+             if (Input.GetKey(Key.B)) bullet.SetXY(this.x + 100, this.y + 100); //BOTTOM*/
+
+            /* if (ArduinoInput.leverValue <= 300)*//*
+             {
+                 delta_height = -50;
+             }
+             else if (ArduinoInput.leverValue >= 800)
+             {
+                 delta_height = 50;
+             }*/
+
+
+            if (Input.GetKey(Key.B)) //UP-TOP
             {
                 delta_height = -50;
             }
-            else if (ArduinoInput.leverValue >= 800)
+            if (Input.GetKey(Key.V)) //DOWN-BOTTOM
             {
                 delta_height = 50;
             }
-
-
-            /*            if (Input.GetKey(Key.V))
-                        {
-                            delta_height = -50;
-                        }
-                        if (Input.GetKey(Key.B))
-                        {
-                            delta_height = 50;
-                        }*/
 
             //if (ArduinoInput.leverValue >= 400 && ArduinoInput.leverValue <= 600) bullet.SetXY(this.x, this.y);
             Console.WriteLine("leverValue= {0}", ArduinoInput.leverValue);

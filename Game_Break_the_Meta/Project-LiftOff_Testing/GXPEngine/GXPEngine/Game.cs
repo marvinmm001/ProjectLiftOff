@@ -20,7 +20,6 @@ namespace GXPEngine
 
 		public SoundManager soundManager = new SoundManager();
 
-
 		public ArduinoInput arduino;
 
 		public int score = 0;

@@ -48,7 +48,7 @@ public class Portal : Sprite
     {
         if (objectsColliding is Player)
         {
-            if (nextLevel == "mainMenu") game.soundManager.musicChannel.Stop();
+            if (nextLevel == "mainMenu" || nextLevel == "scoreScreen") game.soundManager.musicChannel.Stop();
             ((MyGame)game).LoadLevel(nextLevel);
         }
     }
